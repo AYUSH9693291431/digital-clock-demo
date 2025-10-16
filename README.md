@@ -1,21 +1,29 @@
-# Simple Digital Clock
+# Digital Clock • Dark/Light Mode
 
 ## Overview
-A minimal digital clock web app that displays the current time in 24-hour format (HH:MM:SS). The display updates every second and aligns to the exact second boundary to minimize drift.
+A sleek, responsive digital clock web app with:
+- Live time (12-hour or 24-hour format)
+- Current date displayed beneath the time
+- Dark/light mode toggle with saved preference
+- Respects system theme by default and updates dynamically
+
+Accessible, no dependencies, works offline as a single HTML file.
 
 ## Setup
-- No build tools or dependencies required.
-- Simply download or clone this project.
+- Download index.html
+- Open it in any modern web browser (Chrome, Edge, Firefox, Safari)
+
+No build steps or external assets required.
 
 ## Usage
-- Open `index.html` in any modern web browser.
-- The clock will immediately show the current time in 24-hour format and update every second.
+- View the time and current date.
+- Toggle dark/light mode via the switch in the top-right or press the T key.
+  - Your choice is saved and used next visit.
+  - If no choice is saved, the app follows your system theme automatically.
+- Choose 12-hour or 24-hour format from the dropdown. Preference is saved.
 
-## License (MIT)
-Copyright (c) 2025
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+## Improvements in Round 2
+From the previous version, this upgrade includes:
+- Added a dark/light mode toggle with persistence and system theme support.
+- Displayed the current date below the time.
+- Polished UI with accessible controls, keyboard shortcut (T), and subtle theming.
