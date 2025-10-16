@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Digital Clock</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    .container {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    #clock {
+      font-size: clamp(3rem, 12vw, 9rem);
+      letter-spacing: 0.1em;
+      text-shadow: 0 0 18px rgba(59,130,246,0.45);
+    }
+    .subtitle {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="clock" aria-live="polite" aria-label="Current time">--:--:--</div>
+    <div class="subtitle">24-hour format (HH:MM:SS)</div>
+  </div>
+
+  <script>
+    (function () {
+      const el = document.getElementById('clock');
+
+      function pad2(n) {
+        return String(n).padStart(2, '0');
+      }
+
+      function renderNow() {
+        const now = new Date();
+        const hh = pad2(now.getHours());
+        const mm = pad2(now.getMinutes());
+        const ss = pad2(now.getSeconds());
+        el.textContent = `${hh}:${mm}:${ss}`;
+      }
+
+      // Align updates exactly to the next second boundary to minimize drift.
+      function startSecondAlignedTicker() {
+        renderNow(); // paint immediately
+        const now = new Date();
+        const msUntilNextSecond = 1000 - now.getMilliseconds();
+        setTimeout(() => {
+          renderNow();
+          setInterval(renderNow, 1000);
+        }, msUntilNextSecond);
+      }
+
+      startSecondAlignedTicker();
+      // Update when the page becomes visible again (e.g., after tab switch)
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          renderNow();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
